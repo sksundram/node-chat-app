@@ -22,15 +22,22 @@ io.on('connection', (socket) => {
   });
 
   // Emit a 'newMessage' event, custom event -> when the server gets a new message
-  socket.emit('newMessage', {
-    from: 'Mike',
-    text: 'No. Not tonight.',
-    createdAt: 123456
-  });
+  // Emits an event to a single connection
+  // socket.emit('newMessage', {
+  //   from: 'Mike',
+  //   text: 'No. Not tonight.',
+  //   createdAt: 123456
+  // });
 
   // Listen to a 'createMessage' event, custom event -> when the client sends a new message
   socket.on('createMessage', (message) => {
-    console.log('createMessage', message);
+
+    // Emits an event to EVERY single connection
+    io.emit('newMessage', {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime()
+    });
   });
 });
 

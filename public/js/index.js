@@ -7,10 +7,10 @@ socket.on('connect', function() {
 
   // Emit the event only when connected, thus inside the 'connect' event
   // Emit a 'createMessage' event, custom event
-  socket.emit('createMessage', {
-    from: 'Shailesh',
-    text: 'Are you coming tonight for the party?'
-  });
+  // socket.emit('createMessage', {
+  //   from: 'Shailesh',
+  //   text: 'Are you coming tonight for the party?'
+  // });
 });
 
 // Listen to a 'disconnect' event, built-in event -> when a server gets disconnected
